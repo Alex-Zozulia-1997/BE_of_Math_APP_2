@@ -1,8 +1,8 @@
 # Use an official Python runtime as a parent image
 FROM python:3.12
 
-# Expose port 5000 for the Flask app
-EXPOSE 5000
+# Expose port 80 for the gunico app
+EXPOSE 80
 
 # Set the working directory in the container
 WORKDIR /app
