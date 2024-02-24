@@ -17,4 +17,4 @@ RUN pip3 install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Command to run the application
-CMD ["/bin/bash", "dockder-entrypoint.sh"]
+CMD ["/bin/bash", "docker-entrypoint.sh"]
