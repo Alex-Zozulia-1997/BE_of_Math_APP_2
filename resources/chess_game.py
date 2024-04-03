@@ -122,7 +122,7 @@ class Percentile(MethodView):
             )
             percentiles.append({"average_rating_percentile": percentile})
         else:
-            percentiles.append({"average_rating_percentile": "No rating data"})
+            percentiles.append({"average_rating_percentile": "Nothing's solved"})
 
         dict_of_per = {}
         for d in percentiles:

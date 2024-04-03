@@ -85,11 +85,10 @@ def test_get_all_multiplication_games(client):
 def test_add_new_multiplication_game(client):
     access_token = get_token()
     game_data = {
-        "user_id": 3,
-        "game_won": True,
+        "user_id": 1,
+        "game_won": False,
         "total_number_of_digits": 4,
-        "game_date": "2024-01-13T19:10:06.587729",
-        "muliplication_time": 215,
+        "multiplication_time": 215,
         "user_answer": 1234,
         "correct_answer": 432,
     }

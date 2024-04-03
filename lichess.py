@@ -3,10 +3,13 @@ from sqlalchemy.orm import sessionmaker
 import zstandard as zstd
 import csv
 from utils.chess_utils import count_pieces_in_fen, fen_to_text
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # Replace with your actual database URL
-DATABASE_URL = "sqlite:///instance/data.db"
-engine = create_engine(DATABASE_URL)
+engine = create_engine(os.getenv("DATABASE_URL"))
 Session = sessionmaker(bind=engine)
 
 from models import ChessPuzzleModel as Puzzle
