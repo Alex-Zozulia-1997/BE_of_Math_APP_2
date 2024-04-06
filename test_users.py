@@ -74,5 +74,4 @@ def test_add_new_user(client):
 
     assert response.status_code == 200
     data = json.loads(response.data)
-    assert isinstance(data, list)
     assert data["message"] == "all is well, a new user is added"

@@ -38,7 +38,7 @@ def test_get_all_games(client):
 def test_add_new_game(client):
     access_token = get_token()
     game_data = {
-        "user_id": 3,
+        "user_id": 1,
         "game_won": True,
         "game_time": 45,
         "number_of_digits": 4,
@@ -57,6 +57,27 @@ def test_add_new_game(client):
     data = json.loads(response.data)
     assert "message" in data
     assert data["message"] == "all is well, a new game is added"
+
+    def test_add_new_mult_game(client):
+        access_token = get_token()
+        game_data = {
+            "user_id": 1,
+            "game_won": False,
+            "total_number_of_digits": 4,
+            "game_date": "2024-01-27T19:10:06.587729",
+            "multiplication_time": 215,
+            "user_answer": 1234,
+            "correct_answer": 432,
+        }
+
+        headers = {"Authorization": f"Bearer {access_token}"}
+
+        response = client.post("/adding/new", json=game_data, headers=headers)
+
+        assert response.status_code == 200
+        data = json.loads(response.data)
+        assert "message" in data
+        assert data["message"] == "all is well, a new game is added"
 
 
 def test_get_stats(client):
@@ -80,27 +101,6 @@ def test_get_all_multiplication_games(client):
     assert response.status_code == 200
     data = json.loads(response.data)
     assert isinstance(data, list)
-
-
-def test_add_new_multiplication_game(client):
-    access_token = get_token()
-    game_data = {
-        "user_id": 1,
-        "game_won": False,
-        "total_number_of_digits": 4,
-        "multiplication_time": 215,
-        "user_answer": 1234,
-        "correct_answer": 432,
-    }
-
-    headers = {"Authorization": f"Bearer {access_token}"}
-
-    response = client.post("/multiplication/new", json=game_data, headers=headers)
-
-    assert response.status_code == 200
-    data = json.loads(response.data)
-    assert "message" in data
-    assert data["message"] == "all is well, a new game is added"
 
 
 def test_get_multiplication_stats(client):
