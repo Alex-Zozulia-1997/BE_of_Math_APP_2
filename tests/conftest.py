@@ -18,7 +18,7 @@ dotenv.load_dotenv()
 
 @pytest.fixture()
 def app():
-    app = create_app("sqlite:///data.db")
+    app = create_app("sqlite:///:memory:")
     app.config["TESTING"] = True
     app.config["JWT_SECRET_KEY"] = os.getenv("SK")
     jwt = JWTManager(app)
