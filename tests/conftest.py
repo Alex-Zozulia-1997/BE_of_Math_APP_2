@@ -1,4 +1,7 @@
 import pytest
+import sys
+
+sys.path.insert(1, "..")
 from app import create_app
 from flask import json
 from models import UserModel

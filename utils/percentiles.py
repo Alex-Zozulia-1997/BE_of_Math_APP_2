@@ -19,6 +19,20 @@ def get_all_users_averages(model, attribute):
     return avgs
 
 
+def get_all_users_averages(model, attribute):
+    results = (
+        model.query.with_entities(
+            model.user_id, func.avg(getattr(model, attribute)).label("average")
+        )
+        .group_by(model.user_id)
+        .all()
+    )
+    return [
+        (result.user_id, result.average if result.average is not None else 0)
+        for result in results
+    ]
+
+
 def calculate_percentile(user_id, avgs):
     avgs.sort(key=lambda x: x[1])
     user_position = next((i for i, v in enumerate(avgs) if v[0] == user_id), -1)

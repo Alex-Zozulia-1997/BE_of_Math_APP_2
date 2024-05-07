@@ -3,8 +3,6 @@ from flask_smorest import Api
 from flask_jwt_extended import JWTManager
 from flask_cors import CORS
 from flask_migrate import Migrate
-import models
-import secrets
 from blocklist import BLOCKLIST
 from datetime import timedelta
 from dotenv import load_dotenv
@@ -25,7 +23,7 @@ load_dotenv()
 def create_app(db_url=os.getenv("DATABASE_URL")):
     app = Flask(__name__)
     CORS(app)
-    app.config["API_TITLE"] = "Stores REST API"
+    app.config["API_TITLE"] = "MindGames REST API"
     app.config["API_VERSION"] = "v1"
     app.config["OPENAPI_VERSION"] = "3.0.3"
     app.config["OPENAPI_URL_PREFIX"] = "/"

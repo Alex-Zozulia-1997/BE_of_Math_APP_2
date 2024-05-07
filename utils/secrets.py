@@ -1,4 +1,6 @@
 from cryptography.fernet import Fernet
 
 key = Fernet.generate_key()
-print(key.decode())
+
+# uncomment the line below to print your key (SK) into the console.
+# print(key.decode())

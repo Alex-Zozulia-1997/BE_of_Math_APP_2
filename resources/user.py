@@ -10,8 +10,8 @@ from flask_jwt_extended import (
 from flask_jwt_extended import jwt_required, get_jwt
 from blocklist import BLOCKLIST
 
-from models import UserModel, AddingGameModel
-from schemas import UserSchema, AddingGameSchema
+from models import UserModel
+from schemas import UserSchema
 from db import db
 
 blp = Blueprint("Users", "users", description="Operations on users")
