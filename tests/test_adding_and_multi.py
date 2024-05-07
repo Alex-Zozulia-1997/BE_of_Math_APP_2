@@ -58,26 +58,27 @@ def test_add_new_game(client):
     assert "message" in data
     assert data["message"] == "all is well, a new game is added"
 
-    def test_add_new_mult_game(client):
-        access_token = get_token()
-        game_data = {
-            "user_id": 1,
-            "game_won": False,
-            "total_number_of_digits": 4,
-            "game_date": "2024-01-27T19:10:06.587729",
-            "multiplication_time": 215,
-            "user_answer": 1234,
-            "correct_answer": 432,
-        }
 
-        headers = {"Authorization": f"Bearer {access_token}"}
+def test_add_new_mult_game(client):
+    access_token = get_token()
+    game_data = {
+        "user_id": 1,
+        "game_won": False,
+        "total_number_of_digits": 4,
+        "game_date": "2024-01-27T19:10:06.587729",
+        "multiplication_time": 215,
+        "user_answer": 1234,
+        "correct_answer": 432,
+    }
 
-        response = client.post("/adding/new", json=game_data, headers=headers)
+    headers = {"Authorization": f"Bearer {access_token}"}
 
-        assert response.status_code == 200
-        data = json.loads(response.data)
-        assert "message" in data
-        assert data["message"] == "all is well, a new game is added"
+    response = client.post("/multiplication/new", json=game_data, headers=headers)
+
+    assert response.status_code == 200
+    data = json.loads(response.data)
+    assert "message" in data
+    assert data["message"] == "all is well, a new game is added"
 
 
 def test_get_stats(client):
