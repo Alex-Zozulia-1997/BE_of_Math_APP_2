@@ -3,7 +3,6 @@ from flask_smorest import Blueprint, abort
 from passlib.hash import pbkdf2_sha256 as sha256
 from flask_cors import cross_origin
 import datetime
-from flask import request
 from resources.functions.percentile import calculate_percentiles
 
 
