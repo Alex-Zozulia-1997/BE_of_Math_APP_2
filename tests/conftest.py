@@ -5,8 +5,8 @@ sys.path.insert(1, "..")
 from app import create_app
 from flask import json
 from models import UserModel
+
 from random import randint
-from flask import current_app
 from flask_jwt_extended import create_access_token, JWTManager
 
 some_number = randint(0, 100)
