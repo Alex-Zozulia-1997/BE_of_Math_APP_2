@@ -26,16 +26,18 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install -r requirements.txt
           pip install pytest flask
-          
+
       - name: Set PYTHONPATH
         run: echo "PYTHONPATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
-        
+
       - name: Print debugging information
         run: |
           echo "Python Version: $(python --version)"
           echo "Working Directory: $(pwd)"
           echo "Contents of Working Directory: $(ls -l)"
           echo "Contents of site-packages: $(ls -l venv/lib/python*/site-packages)"
+      - name: Run flask app
+        run: flask run
 
       - name: Run tests
         run: pytest
