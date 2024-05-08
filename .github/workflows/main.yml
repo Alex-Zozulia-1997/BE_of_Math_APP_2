@@ -39,8 +39,12 @@ jobs:
 
       - name: Set environment variables
         run: |
-          echo "SECRET_KEY=7Oei1LOom7Pdimhh_zGGL2flLGMZ8fbEC_vJTYPU8jA=" >> $GITHUB_ENV
+          echo "FLASK_APP=app" >> $GITHUB_ENV
+          echo "FLASK_ENV=development" >> $GITHUB_ENV
+          echo "JWT_SECRET_KEY=263439876012693437083642831966594211143" >> $GITHUB_ENV
 
+      - name: Run tests
+        run: pytest
       - name: Start Flask server
         run: |
           flask run &
