@@ -2,12 +2,17 @@ import pytest
 from app import create_app
 from flask import json
 from utils.utils_for_tests import get_token
+import os
+import dotenv
 
 
 @pytest.fixture()
 def app():
-    app = create_app("sqlite:///data.db")
+    app = create_app("sqlite:///:memory:")
     app.config["TESTING"] = True
+    app.config["JWT_SECRET_KEY"] = os.getenv(
+        "SK", "263439876012693437083642831966594211143"
+    )
     yield app
 
 
