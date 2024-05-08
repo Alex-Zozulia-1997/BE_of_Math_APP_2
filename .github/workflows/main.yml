@@ -52,13 +52,19 @@ jobs:
 
       - name: Start Flask server
         run: |
-          flask run --host=0.0.0.0 &
+          flask run --host=0.0.0.0 --port=5000 &
 
       - name: Wait for Flask to start
         run: |
-          while ! curl --output /dev/null --silent --head --fail ${{ env.TEST_BASE_URL }}; do
-            echo "Waiting for Flask server to start..."
-            sleep 5
+          echo "Waiting for Flask server to start at ${{ env.TEST_BASE_URL }}:5000"
+          for i in {1..10}; do
+            if curl --output /dev/null --silent --head --fail ${{ env.TEST_BASE_URL }}:5000; then
+              echo "Flask server is up and running!"
+              break
+            else
+              echo "Attempt $i: Flask server not yet available..."
+              sleep 5
+            fi
           done
 
       - name: Run tests
