@@ -36,6 +36,11 @@ jobs:
           echo "Working Directory: $(pwd)"
           echo "Contents of Working Directory: $(ls -l)"
           echo "Contents of site-packages: $(ls -l venv/lib/python*/site-packages)"
+
+      - name: Set environment variables
+        run: |
+          echo "SECRET_KEY=7Oei1LOom7Pdimhh_zGGL2flLGMZ8fbEC_vJTYPU8jA=" >> $GITHUB_ENV
+
       - name: Start Flask server
         run: |
           flask run &
