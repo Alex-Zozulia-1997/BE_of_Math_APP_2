@@ -42,6 +42,7 @@ jobs:
           echo "FLASK_APP=app" >> $GITHUB_ENV
           echo "FLASK_ENV=development" >> $GITHUB_ENV
           echo "JWT_SECRET_KEY=263439876012693437083642831966594211143" >> $GITHUB_ENV
+          echo "TEST_BASE_URL=http://127.0.0.1:5000" >> $GITHUB_ENV
 
       - name: Start Flask server
         run: |
