@@ -9,7 +9,7 @@ class TestAuthRoutes(unittest.TestCase):
     def setUp(self):
         self.app = create_app("sqlite:///data.db")
         self.app.config["TESTING"] = True
-        self.app.config["JWT_SECRET_KEY"] = 263439876012693437083642831966594211143
+        self.app.config["JWT_SECRET_KEY"] = "263439876012693437083642831966594211143"
         self.client = self.app.test_client()
 
     def test_login(self):
