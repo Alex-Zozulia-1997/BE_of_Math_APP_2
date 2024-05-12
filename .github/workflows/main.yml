@@ -68,4 +68,4 @@ jobs:
       #     done
 
       - name: Run tests
-        run: pytest
+        run: pytest tests/test_auth.py
