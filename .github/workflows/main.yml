@@ -53,22 +53,22 @@ jobs:
           echo "JWT_SECRET_KEY=$JWT_SECRET_KEY" >> $GITHUB_ENV
           echo "TEST_BASE_URL=$TEST_BASE_URL" >> $GITHUB_ENV
 
-      # - name: Start Flask server
-      #   run: |
-      #     flask run --host=0.0.0.0 --port=5000 & sleep 10
+      - name: Start Flask server
+        run: |
+          flask run --host=0.0.0.0 --port=5000 & sleep 10
 
-      # - name: Wait for Flask to start
-      #   run: |
-      #     echo "Waiting for Flask server to start at http://127.0.0.1:5000"
-      #     for i in {1..20}; do
-      #       if curl --output /dev/null --silent --head --fail http://127.0.0.1:5000; then
-      #         echo "Flask server is up and running!"
-      #         break
-      #       else
-      #         echo "Attempt $i: Flask server not yet available..."
-      #         sleep 5
-      #       fi
-      #     done
+      - name: Wait for Flask to start
+        run: |
+          echo "Waiting for Flask server to start at http://127.0.0.1:5000"
+          for i in {1..20}; do
+            if curl --output /dev/null --silent --head --fail http://127.0.0.1:5000; then
+              echo "Flask server is up and running!"
+              break
+            else
+              echo "Attempt $i: Flask server not yet available..."
+              sleep 5
+            fi
+          done
 
-      # - name: Run tests
-      #   run: pytest tests/test_auth.py
+      - name: Run tests
+        run: pytest tests/test_auth.py
