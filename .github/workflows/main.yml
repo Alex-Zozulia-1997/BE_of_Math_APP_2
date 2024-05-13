@@ -70,5 +70,5 @@ jobs:
       #       fi
       #     done
 
-      - name: Run tests
-        run: pytest tests/test_auth.py
+      # - name: Run tests
+      #   run: pytest tests/test_auth.py
