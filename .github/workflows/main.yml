@@ -28,6 +28,9 @@ jobs:
           python -m pip install -r requirements.txt
           pip install pytest flask
 
+      - name: Lint the shit out of it
+        run: flake8 .
+
       - name: Set PYTHONPATH
         run: echo "PYTHONPATH=$GITHUB_WORKSPACE" >> $GITHUB_ENV
 

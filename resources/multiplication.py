@@ -1,14 +1,17 @@
 from flask.views import MethodView
-from flask_smorest import Blueprint, abort
-from passlib.hash import pbkdf2_sha256 as sha256
-from flask_cors import cross_origin
+from flask_smorest import Blueprint
 import datetime
-from utils.percentiles import *
+from utils.percentiles import (
+    calculate_percentile,
+    get_all_users_averages,
+    get_all_users_totals,
+    get_all_users_success_rates,
+)
 
 from flask_jwt_extended import (
     get_jwt_identity,
 )
-from flask_jwt_extended import jwt_required, get_jwt
+from flask_jwt_extended import jwt_required
 
 from models import MultiplicationGameModel
 from schemas import MuiltplyGameSchema

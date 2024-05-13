@@ -1,16 +1,13 @@
 from flask.views import MethodView
-from flask_smorest import Blueprint, abort
-from passlib.hash import pbkdf2_sha256 as sha256
-from flask_cors import cross_origin
+from flask_smorest import Blueprint
 from flask import request
-from random import randint, choice
+from random import choice
 
 
-from flask_jwt_extended import jwt_required, get_jwt
+from flask_jwt_extended import jwt_required
 
 from models import ChessPuzzleModel
 from schemas import ChessPuzzleSchema
-from db import db
 
 
 blp = Blueprint(

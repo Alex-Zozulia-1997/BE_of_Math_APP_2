@@ -2,8 +2,10 @@ import pytest
 from app import create_app
 from flask import json
 from utils.utils_for_tests import get_token
+from random import randint
 
 last_number = 0
+some_number = randint(0, 100)
 
 
 @pytest.fixture()
@@ -75,3 +77,12 @@ def test_add_new_user(client):
     assert response.status_code == 200
     data = json.loads(response.data)
     assert data["message"] == "all is well, a new user is added"
+
+
+def test_fake_login(client):
+    user_data = {
+        "username": f"estuse9r@users.com",
+        "password": "password123",
+    }
+    response = client.post("login", json=user_data)
+    assert response.status_code == 401

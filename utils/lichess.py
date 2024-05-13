@@ -5,14 +5,13 @@ import csv
 from utils.chess_utils import count_pieces_in_fen, fen_to_text
 import os
 from dotenv import load_dotenv
+from models import ChessPuzzleModel as Puzzle
 
 load_dotenv()
 
 # Replace with your actual database URL
 engine = create_engine(os.getenv("DATABASE_URL"))
 Session = sessionmaker(bind=engine)
-
-from models import ChessPuzzleModel as Puzzle
 
 
 def decompress_zst(file_path):

@@ -11,15 +11,6 @@ def get_user_average(model, user_id, attribute):
 
 
 def get_all_users_averages(model, attribute):
-    all_users = model.query.with_entities(model.user_id).distinct()
-    avgs = []
-    for user in all_users:
-        avg = get_user_average(model, user.user_id, attribute)
-        avgs.append((user.user_id, avg))
-    return avgs
-
-
-def get_all_users_averages(model, attribute):
     results = (
         model.query.with_entities(
             model.user_id, func.avg(getattr(model, attribute)).label("average")

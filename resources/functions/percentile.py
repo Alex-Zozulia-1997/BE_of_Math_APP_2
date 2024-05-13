@@ -1,10 +1,7 @@
 from utils.percentiles import (
-    get_user_average,
     get_all_users_averages,
     calculate_percentile,
-    get_user_success_rate,
     get_all_users_success_rates,
-    get_user_total,
     get_all_users_totals,
 )
 

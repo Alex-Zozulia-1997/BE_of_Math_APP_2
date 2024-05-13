@@ -65,6 +65,6 @@ def count_pieces_in_fen(fen):
     return len(piece_map)
 
 
-if __name__ == "__main__":
-    fen_string = puzzle["fen"]  # Example FEN
-    print(fen_to_text(fen_string))
+# if __name__ == "__main__":
+#     fen_string = puzzle["fen"]  # Example FEN
+#     print(fen_to_text(fen_string))

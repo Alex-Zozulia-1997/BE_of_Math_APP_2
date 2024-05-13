@@ -91,3 +91,25 @@ def test_get_random_chess_puzzle(client):
         assert "id" in data
     else:
         assert "error" in data
+
+
+import pytest
+from flask import json
+
+
+def test_get_percentile(client):
+    access_token = get_token()
+    headers = {"Authorization": f"Bearer {access_token}"}
+
+    response = client.get("/chess_game/percentile", headers=headers)
+
+    assert response.status_code == 200
+
+    assert response.content_type == "application/json"
+
+    data = json.loads(response.data)
+    assert isinstance(data, dict)
+
+    expected_keys = ["success_rate", "solving_time", "average_rating_percentile"]
+    for key in expected_keys:
+        assert key in data, f"Key {key} is missing in the response"

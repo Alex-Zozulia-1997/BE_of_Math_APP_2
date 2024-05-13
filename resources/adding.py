@@ -1,7 +1,5 @@
 from flask.views import MethodView
-from flask_smorest import Blueprint, abort
-from passlib.hash import pbkdf2_sha256 as sha256
-from flask_cors import cross_origin
+from flask_smorest import Blueprint
 import datetime
 from resources.functions.percentile import calculate_percentiles
 
@@ -9,8 +7,7 @@ from resources.functions.percentile import calculate_percentiles
 from flask_jwt_extended import (
     get_jwt_identity,
 )
-from flask_jwt_extended import jwt_required, get_jwt
-from blocklist import BLOCKLIST
+from flask_jwt_extended import jwt_required
 
 from models import AddingGameModel
 from schemas import AddingGameSchema
